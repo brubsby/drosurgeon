@@ -1,0 +1,17 @@
+# Ignore Generated Audio Files
+*.wav
+*.dro
+!tmprog_000.dro 
+
+# Ignore Build Artifacts
+droplay_original_build_dir/
+droplay_wav
+droplay-upstream/build/
+
+# Ignore Python Cache
+__pycache__/
+*.pyc
+
+# Ignore Editor Configs
+.vscode/
+.idea/
