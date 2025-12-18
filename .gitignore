@@ -1,7 +1,6 @@
 # Ignore Generated Audio Files
 *.wav
-*.dro
-!tmprog_000.dro 
+*.dro 
 
 # Ignore Build Artifacts
 droplay_original_build_dir/
