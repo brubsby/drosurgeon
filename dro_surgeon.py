@@ -361,12 +361,19 @@ def calc_shift(hex_a0, hex_b0, semitones):
     print(f"Reg B{hex_b0 & 0x0F} (Block) : {hex_b0:02X} -> {new_b0_val:02X}")
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python3 dro_surgeon.py dump <file.dro>")
-        print("       python3 dro_surgeon.py remove <input.dro> <channel_num> <output.dro>")
-        print("       python3 dro_surgeon.py isolate <input.dro> <channel_num> <output.dro>")
-        print("       python3 dro_surgeon.py calc <HexA0> <HexB0> <Semitones>")
-        sys.exit(1)
+    def show_help():
+        print("Usage: python3 dro_surgeon.py <command> [args]")
+        print("\nCommands:")
+        print("  dump    <file.dro>                        Dump readable event stream")
+        print("  remove  <in.dro> <ch_num> <out.dro>       Remove a specific channel (0-17)")
+        print("  isolate <in.dro> <ch_num> <out.dro>       Keep ONLY a specific channel (0-17)")
+        print("  calc    <HexA0> <HexB0> <Semitones>       Calculate register values for pitch shift")
+        print("\nExample:")
+        print("  python3 dro_surgeon.py isolate song.dro 5 isolated.dro")
+
+    if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h"):
+        show_help()
+        sys.exit(0)
 
     if sys.argv[1] == "dump":
         dump_dro(sys.argv[2])
